@@ -19,35 +19,39 @@ namespace AddressBook
             public string Email { get; set; }
 
         }
-        private static void GetPerson()
+        public static void GetPerson()
         {
             Person person = new Person();
+            for (int i = 0; i < 2; i++)
+            {
 
-            Console.Write("Enter First Name: ");
-            person.FirstName = Console.ReadLine();
+                Console.Write("Enter First Name: ");
+                person.FirstName = Console.ReadLine();
 
-            Console.Write("Enter Last Name: ");
-            person.LastName = Console.ReadLine();
+                Console.Write("Enter Last Name: ");
+                person.LastName = Console.ReadLine();
 
-            Console.Write("Enter Address : ");
-            person.Address = Console.ReadLine();
+                Console.Write("Enter Address : ");
+                person.Address = Console.ReadLine();
 
-            Console.Write("Enter City : ");
-            person.City = Console.ReadLine();
+                Console.Write("Enter City : ");
+                person.City = Console.ReadLine();
 
-            Console.Write("Enter State : ");
-            person.State = Console.ReadLine();
+                Console.Write("Enter State : ");
+                person.State = Console.ReadLine();
 
-            Console.Write("Enter PhoneNumber : ");
-            person.PhoneNumber = Console.ReadLine();
+                Console.Write("Enter PhoneNumber : ");
+                person.PhoneNumber = Console.ReadLine();
 
-            Console.Write("Enter ZipCode: ");
-            person.ZipCode = Console.ReadLine();
+                Console.Write("Enter ZipCode: ");
+                person.ZipCode = Console.ReadLine();
 
-            Console.Write("Enter Email: ");
-            person.Email = Console.ReadLine();
+                Console.Write("Enter Email: ");
+                person.Email = Console.ReadLine();
 
-            People.Add(person);
+                Console.WriteLine("\n");
+                People.Add(person);
+            }
         }
         public static void PrintCustomer(Person person)
         {
@@ -137,12 +141,13 @@ namespace AddressBook
         {
             Console.WriteLine("Enter the first name of the person you would like to remove.");
             string Remove = Console.ReadLine();
-            foreach (var person in People.ToList())
+            foreach (var person in People.ToList()) // using linq here .TOList
             {
                 if (person.FirstName.ToUpper() == Remove.ToUpper())
                 {
                     People.Remove(person);
                     Console.WriteLine("Contact is deleted");
+                    continue;
                 }
                 else
                 {
@@ -167,15 +172,6 @@ namespace AddressBook
             Console.ReadKey();
         }
 
-
-        static void Main(string[] args)
-        {
-
-            GetPerson();
-            ListingPeople();
-            Modify();
-            RemovePeople();
-        }
     }
 
 }
